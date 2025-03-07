@@ -1,2 +1,3 @@
 # Dependency directories
 test-app/node_modules/
+.vscode/
