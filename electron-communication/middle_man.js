@@ -9,7 +9,7 @@ async function main()
 
     // Light State
     const LightMessage = rclnodejs.require('wheelchair_sensor_msgs/msg/Light'); // Custom message path
-    const lightPublisher = node.createPublisher(LightMessage, 'light_topic'); // Create a publisher
+    const lightPublisher = node.createPublisher(LightMessage, 'light'); // Create a publisher
 
     console.log(`Waiting to recieve data...`);
 
