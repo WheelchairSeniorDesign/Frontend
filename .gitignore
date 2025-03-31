@@ -1,3 +1,12 @@
 # Dependency directories
-test-app/node_modules/
-.vscode/
+./test-app/node_modules/*
+./test-app/package-lock.json
+./electron-communication/node_modules/*
+./electron-communication/package-lock.json
+./electron-communication/package.json
+
+# Extra testing directories
+./ros2-test
+
+# Extra Stuff
+./vscode/
