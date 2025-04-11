@@ -1,19 +1,15 @@
-
-const { app, BrowserWindow, ipcMain } = require('electron/main');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
 
 app.disableHardwareAcceleration(); // Disable GPU acceleration
-
 
 //------------------------------------------------------------------------------------------------------
 // ROS 2 Stuff
 const rclnodejs = require('rclnodejs');
 let publisher = null
+
 async function initROS() {
   await rclnodejs.init();
-
-  // Reference custom messages
-  //const MyMessage = rclnodejs.require('wheelchair_sensor_msgs/msg/Light');
 
   // Create node
   const node = new rclnodejs.Node('electron_node');
@@ -22,15 +18,15 @@ async function initROS() {
   const topic = 'electron_light';
 
   // Create publisher
-  //const publisher = node.createPublisher(MyMessage, topic); // Custom message publisher
   publisher = node.createPublisher('std_msgs/msg/String', topic); // Basic string publisher
 }
 //------------------------------------------------------------------------------------------------------
 
 // Create window function
+let mainWindow;
 function createWindow() {
   // First create the window variable using BrowserWindow
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
 
@@ -38,47 +34,35 @@ function createWindow() {
     autoHideMenuBar: true, // Hide menu bar
 
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js') // __dirname gives the absolute path
+      preload: path.join(__dirname, 'preload.js'), // __dirname gives the absolute path
+      
+      // Stuff to use with preload.js separation
+      contextIsolation: true, 
+      nodeIntegration: false
     }
   });
 
   // Load HTML file
-  mainWindow.loadFile(path.join(__dirname, 'index.html')).catch(err => {
-    console.error("Failed to load index.html:", err);
-  });
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
 }
 
 // Listen for LED mode changes and update a file
 ipcMain.on('set-light-mode', (event, mode) => {
   console.log(`Setting Light mode: ${mode}`);
 
-  //------------------------------------------------------------------------------------------------------
+  //----------------------------------------------------------
   // ROS 2 Stuff
   publisher.publish(mode); // For string publisher
   console.log(`---> Published from Electron app: ${mode}`);
-
-  // if(mode == steady) {
-  //   // uint8 STEADY=1
-  //   const message = { state: 1 };
-  //   publisher.publish(message);
-  //   console.log(`Published: ${message.state}`);
-  // } 
-  // else if (mode == flashing) {
-  //   // uint8 FLASH=2
-  //   const message = { state: 1 };
-  //   publisher.publish(message);
-  //   console.log(`Published: ${message.state}`);
-  // } 
-  // else {
-  //   // uint8 OFF=0
-  //   const message = { state: 1 };
-  //   publisher.publish(message);
-  //   console.log(`Published: ${message.state}`);
-  // }
-  //------------------------------------------------------------------------------------------------------
+  
+  // Update Frontend display
+  temp = "Light Status: " + mode.toUpperCase();
+  mainWindow.webContents.send('update-light-display', temp);
+  //----------------------------------------------------------
 
 });
 
+//--------------------------------------------------------------------------
 // When ready...
 app.whenReady().then(async () => {
   initROS(); // Initialize ROS 2 publisher

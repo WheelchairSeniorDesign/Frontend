@@ -3,17 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Light Control</title>
+    <title>Wheelchair Interface App</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Control Light Mode</h1>
-        <div class="button-row">
-            <button id="flashing">Flashing</button>
-            <button id="steady">Steady</button>
-            <button id="off">Off</button>
+    <div class="grid">
+        <div class="corner top-left">
+            <h3>Top Left</h3>
+            <p>Content goes here</p>
+        </div>
+
+        <div class="corner top-right">
+            <h3>Top Right</h3>
+            <p>Content goes here</p>
+        </div>
+
+        <div class="corner bottom-left">
+            <!-- <h3>Light Control</h3> -->
+            <div class="light-row-0">
+                <p class="header">Light Control</p>
+            </div>
+            <div class="light-row-1">
+                <button id="flashing">Flashing</button>
+                <button id="steady">Steady</button>
+                <button id="off">Off</button>
+            </div>
+            <div class="light-row-2">
+                <p class="text"><span id="lightStatus">Light Status: OFF</span></p>
+            </div>
+        </div>
+
+        <div class="corner bottom-right">
+            <h3>Bottom Right</h3>
+            <p>Content goes here</p>
         </div>
     </div>
 
