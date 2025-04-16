@@ -15,7 +15,7 @@ async function main()
     const lidarPublisher = node.createPublisher(lidarMessage, 'lidar');
 
     const brakeMessage = rclnodejs.require('wheelchair_sensor_msgs/msg/Brake');
-    const brakePublisher = node.createPublisher(brakeMessage, 'eBrake');
+    const brakePublisher = node.createPublisher(brakeMessage, 'ebrake');
 
     console.log(`Waiting to recieve data...`);
 
