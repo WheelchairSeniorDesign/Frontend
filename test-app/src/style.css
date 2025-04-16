@@ -85,18 +85,24 @@ body {
 button {
     flex: 1; /* Makes each button take equal space */
     padding: 10px;
-    font-size: clamp(23px, 2vw, 45px);
-
     border: 1px solid rgb(255, 255, 255);
     border-radius: 20px;
+
+    font-size: clamp(23px, 2vw, 45px);
+    color: white;
 
     cursor: pointer;
     transition: 0.2s ease;
 }
 
-#flashing { background: #ffcc00; color: white; }
-#steady { background: #4CAF50; color: white; }
-#off { background: #f44a4a; color: white; }
+button[data-action="LIGHT_FLASHING"] { background: #ffcc00; }
+button[data-action="LIGHT_STEADY"] { background: #4CAF50; }
+button[data-action="LIGHT_OFF"] { background: #f44a4a; }
+
+button[data-action="LIDAR_ON"] { background: #9db7ed; }
+button[data-action="LIDAR_OFF"] { background: #0c2e77;}
+button[data-action="BRAKE_ON"] { background: #e60000; }
+button[data-action="BRAKE_OFF"] { background: #e38585; }
 
 button:hover {
     opacity: 0.8;

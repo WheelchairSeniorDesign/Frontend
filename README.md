@@ -88,6 +88,12 @@ Install `rclnodejs`:
 npm install rclnodejs
 ```
 
+For ROS 2 custom messages run:
+
+```sh
+npx generate-ros-messages
+```
+
 ### 4. Sourcing
 
 Add the following lines to your `.bashrc` file to source ROS 2 Humble and custom messages:

@@ -3,8 +3,8 @@ const path = require('node:path');
 
 app.disableHardwareAcceleration(); // Disable GPU acceleration
 
-//------------------------------------------------------------------------------------------------------
-// ROS 2 Stuff
+//--------------------------------------------------------------------------------------------------
+// ROS 2 Setup Stuff
 const rclnodejs = require('rclnodejs');
 let publisher = null
 
@@ -14,15 +14,19 @@ async function initROS() {
   // Create node
   const node = new rclnodejs.Node('electron_node');
 
-  // Create topic
-  const topic = 'electron_light';
+  // Create topics
+  const topic_light = 'electron_light';
+  const topic_brake = 'electron_brake';
+  const topic_lidar = 'electron_lidar';
 
-  // Create publisher
-  publisher = node.createPublisher('std_msgs/msg/String', topic); // Basic string publisher
+  // Create publishers
+  publisher_light = node.createPublisher('std_msgs/msg/String', topic_light);
+  publisher_brake = node.createPublisher('std_msgs/msg/String', topic_brake);
+  publisher_lidar = node.createPublisher('std_msgs/msg/String', topic_lidar);
 }
-//------------------------------------------------------------------------------------------------------
 
-// Create window function
+//--------------------------------------------------------------------------------------------------
+// Window functionality
 let mainWindow;
 function createWindow() {
   // First create the window variable using BrowserWindow
@@ -36,7 +40,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'), // __dirname gives the absolute path
       
-      // Stuff to use with preload.js separation
+      // Stuff to use with preload.js separation````````
       contextIsolation: true, 
       nodeIntegration: false
     }
@@ -46,24 +50,35 @@ function createWindow() {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 }
 
-// Listen for LED mode changes and update a file
-ipcMain.on('set-light-mode', (event, mode) => {
-  console.log(`Setting Light mode: ${mode}`);
+//--------------------------------------------------------------------------------------------------
+// Interaction with render process
+ipcMain.on('button-action', (event, action) => {
+  console.log(`Received button action: ${action}`);
 
-  //----------------------------------------------------------
-  // ROS 2 Stuff
-  publisher.publish(mode); // For string publisher
-  console.log(`---> Published from Electron app: ${mode}`);
-  
-  // Update Frontend display
-  temp = "Light Status: " + mode.toUpperCase();
-  mainWindow.webContents.send('update-light-display', temp);
-  //----------------------------------------------------------
+  // Publish to ROS 2 & send display updates
+  if(action == "LIGHT_FLASHING" || action == "LIGHT_STEADY" || action == "LIGHT_OFF") {
+    publisher_light.publish(action);
+    console.log(`---> Published from Electron app: ${action}`);
+    
+    temp = action.substring(action.indexOf('_') + 1);
+    temp = "Light Status: " + temp;
+    mainWindow.webContents.send('update-display', temp);
+  }
+
+  if(action == "BRAKE_ON" || action == "BRAKE_OFF") {
+    publisher_brake.publish(action);
+    console.log(`---> Published from Electron app: ${action}`);
+  }
+
+  if (action == "LIDAR_ON" || action == "LIDAR_OFF") {
+    publisher_lidar.publish(action);
+    console.log(`---> Published from Electron app: ${action}`);
+  }
 
 });
 
-//--------------------------------------------------------------------------
-// When ready...
+//--------------------------------------------------------------------------------------------------
+// Other necessary stuff
 app.whenReady().then(async () => {
   initROS(); // Initialize ROS 2 publisher
 
@@ -75,7 +90,6 @@ app.whenReady().then(async () => {
   
 });
 
-// When closed...
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit();
 });

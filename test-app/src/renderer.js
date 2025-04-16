@@ -1,26 +1,23 @@
+const buttons = document.querySelectorAll('.app-button');
+
 //------------------------------------------------------------------
-// Light Buttons
-// Grab button IDs
-const flashingButton = document.getElementById('flashing');
-const steadyButton = document.getElementById('steady');
-const offButton = document.getElementById('off');
-
-// Add event listeners
-flashingButton.addEventListener('click', () => {
-  window.electronAppAPI.setLightMode('flashing');
-});
-
-steadyButton.addEventListener('click', () => {
-  window.electronAppAPI.setLightMode('steady');
-});
-
-offButton.addEventListener('click', () => {
-  window.electronAppAPI.setLightMode('off');
+// Add listeners to each button
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const action = button.dataset.action;
+    window.electronAppAPI.sendAction(action);
+  });
 });
 
 //------------------------------------------------------------------
-// Light Mode Frontend Update
-window.electronAppAPI.lightUpdate((data) => {
-  document.getElementById('lightStatus').textContent = data;
-});
+// Display updates
+window.electronAppAPI.onDisplayUpdate(function(data) {
+  const statusBox = document.getElementById('lightStatus');
+  statusBox.textContent = data;
 
+  // // Optional styling
+  // const color = data.includes("ON") ? "lightgreen" :
+  //               data.includes("OFF") ? "lightcoral" :
+  //               "lightgray";
+  // statusBox.style.backgroundColor = color;
+});

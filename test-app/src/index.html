@@ -25,18 +25,29 @@
                 <p class="header">Light Control</p>
             </div>
             <div class="light-row-1">
-                <button id="flashing">Flashing</button>
-                <button id="steady">Steady</button>
-                <button id="off">Off</button>
+                <button class="app-button" data-action="LIGHT_FLASHING">Flashing</button>
+                <button class="app-button" data-action="LIGHT_STEADY">Steady</button>
+                <button class="app-button" data-action="LIGHT_OFF">Off</button>
             </div>
             <div class="light-row-2">
-                <p class="text"><span id="lightStatus">Light Status: OFF</span></p>
+                <p class="text"><span id="lightStatus">Light Status: ---</span></p>
             </div>
         </div>
 
         <div class="corner bottom-right">
-            <h3>Bottom Right</h3>
-            <p>Content goes here</p>
+            <div class="light-row-0">
+                <p class="header">Brake & LiDAR Control</p>
+            </div>
+            <div class="light-row-1">
+                <button class="app-button" data-action="LIDAR_ON">LiDAR On</button>
+                <button class="app-button" data-action="LIDAR_OFF">LiDAR Off</button>
+                <!-- <p class="text"><span id="lidarStatus">LiDAR Status: ---</span></p> -->
+            </div>
+            <div class="light-row-1">
+                <button class="app-button" data-action="BRAKE_ON">Brake On</button>
+                <button class="app-button" data-action="BRAKE_OFF">Brake Off</button>
+                <!-- <p class="text"><span id="brakeStatus">Brake Status: ---</span></p> -->
+            </div>
         </div>
     </div>
 
