@@ -8,50 +8,87 @@
 </head>
 
 <body>
-    <div class="grid">
-        <div class="corner top-left">
-            <h3>Top Left</h3>
-            <p>Content goes here</p>
+    <div class="grid-container">
+        <div class="grid-item top-left">
+            
         </div>
 
-        <div class="corner top-right">
-            <h3>Top Right</h3>
-            <p>Content goes here</p>
+        <div class="grid-item top-right">
+            <div class="brake-row-0">
+                <p class="fit-text header">&nbsp;LiDAR Control&nbsp;</p>
+            </div>
+            <div class="brake-row-1">
+                <button class="app-button" data-action="LIDAR_ON">
+                    <span class="fit-text">&nbsp;LiDAR On&nbsp;</span>
+                </button>
+                <button class="app-button" data-action="LIDAR_OFF">
+                    <span class="fit-text">&nbsp;LiDAR Off&nbsp;</span>
+                </button>
+            </div>
         </div>
 
-        <div class="corner bottom-left">
-            <!-- <h3>Light Control</h3> -->
+        <div class="grid-item bottom-left">
             <div class="light-row-0">
-                <p class="header">Light Control</p>
+                <p class="fit-text header">&nbsp;Light Control&nbsp;</p>
             </div>
             <div class="light-row-1">
-                <button class="app-button" data-action="LIGHT_FLASHING">Flashing</button>
-                <button class="app-button" data-action="LIGHT_STEADY">Steady</button>
-                <button class="app-button" data-action="LIGHT_OFF">Off</button>
+                <button class="app-button" data-action="LIGHT_FLASHING">
+                    <span class="fit-text">&nbsp;Flashing&nbsp;</span>
+                </button>
+                <button class="app-button" data-action="LIGHT_STEADY">
+                    <span class="fit-text">&nbsp;Steady&nbsp;</span>
+                </button>
+                <button class="app-button" data-action="LIGHT_OFF">
+                    <span class="fit-text">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </button>
             </div>
-            <div class="light-row-2">
+            <!-- <div class="light-row-2 text">
                 <p class="text"><span id="lightStatus">Light Status: ---</span></p>
-            </div>
+            </div> -->
         </div>
 
-        <div class="corner bottom-right">
-            <div class="light-row-0">
-                <p class="header">Brake & LiDAR Control</p>
+        <div class="grid-item bottom-right">
+            <div class="brake-row-0">
+                <p class="fit-text header">&nbsp;Brake Control&nbsp;</p>
             </div>
-            <div class="light-row-1">
-                <button class="app-button" data-action="LIDAR_ON">LiDAR On</button>
-                <button class="app-button" data-action="LIDAR_OFF">LiDAR Off</button>
-                <!-- <p class="text"><span id="lidarStatus">LiDAR Status: ---</span></p> -->
-            </div>
-            <div class="light-row-1">
-                <button class="app-button" data-action="BRAKE_ON">Brake On</button>
-                <button class="app-button" data-action="BRAKE_OFF">Brake Off</button>
-                <!-- <p class="text"><span id="brakeStatus">Brake Status: ---</span></p> -->
+            <div class="brake-row-1">
+                <button class="app-button" data-action="BRAKE_ON">
+                    <span class="fit-text">&nbsp;Brake On&nbsp;</span>
+                </button>
+                <button class="app-button" data-action="BRAKE_OFF">
+                    <span class="fit-text">&nbsp;Brake Off&nbsp;</span>
+                </button>
             </div>
         </div>
     </div>
 
-    <script src="./renderer.js"></script>
-</body>
+    <script src="../node_modules/fitty/dist/fitty.min.js"></script>
+    <script>
+        // Text Sizing
+        window.onload = () => {
+            fitty('.fit-text');
+        };
 
+        // Non-stick Buttons
+        document.querySelectorAll('.app-button').forEach(button => {
+            let timeout;
+
+            // Note: Mouse clicks are naturally a little longer than a touch press
+            button.addEventListener('pointerdown', () => {
+                button.classList.add('pressed');
+                clearTimeout(timeout);
+            });
+
+            button.addEventListener('pointerup', () => {
+                timeout = setTimeout(() => {
+                    button.classList.remove('pressed');
+                }, 175); //ms
+            });
+        });
+    </script>
+    <script src="./renderer.js"></script>
+
+</body>
 </html>

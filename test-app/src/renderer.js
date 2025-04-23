@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll('.app-button');
+const buttons = document.querySelectorAll('button.app-button');
 
 //------------------------------------------------------------------
 // Add listeners to each button
@@ -9,15 +9,10 @@ buttons.forEach(button => {
   });
 });
 
+
 //------------------------------------------------------------------
 // Display updates
 window.electronAppAPI.onDisplayUpdate(function(data) {
   const statusBox = document.getElementById('lightStatus');
   statusBox.textContent = data;
-
-  // // Optional styling
-  // const color = data.includes("ON") ? "lightgreen" :
-  //               data.includes("OFF") ? "lightcoral" :
-  //               "lightgray";
-  // statusBox.style.backgroundColor = color;
 });

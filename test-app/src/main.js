@@ -60,6 +60,7 @@ ipcMain.on('button-action', (event, action) => {
     publisher_light.publish(action);
     console.log(`---> Published from Electron app: ${action}`);
     
+    // Update display
     temp = action.substring(action.indexOf('_') + 1);
     temp = "Light Status: " + temp;
     mainWindow.webContents.send('update-display', temp);

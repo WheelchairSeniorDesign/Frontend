@@ -1,114 +1,151 @@
 /* ------------------------------------------------------------------------------------- */
 /* -- Toplevel Stuff -- */
+html,
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-
-    height: 100vh;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
     margin: 0;
-    
+    height: 100%;
+
     text-align: center;
     color: white;
     font-family: Arial, sans-serif;
 }
 
-.grid {
+/* ------------------------------------------------------------------------------------- */
+/* -- Full Grid Stuff -- */
+.grid-container {
     display: grid;
-    height: 100%;
-    width: 98%; 
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100vh;
+    width: 100vw;
 }
 
-/* ------------------------------------------------------------------------------------- */
-/* -- Individual Corner Stuff -- */
-.corner {
+.grid-item {
     display: flex;
     flex-direction: column;
-
-    justify-content: space-between;
     align-items: center;
-    gap: 20px;
-
-    border: 0.5px solid #d6d4d4;
-    padding: 15px;
+    overflow: hidden;
+    
+    background-color: #74cbf0;
+    border: 1px solid #d6d4d4;
+    padding: 15px; /* Gaps above and below grid contents*/
 }
 
-.top-left { grid-row: 1 / 2; grid-column: 1 / 2; background-color: #74cbf0; }
-.top-right { grid-row: 1 / 2; grid-column: 2 / 3; background-color: #74cbf0; }
-.bottom-left { grid-row: 2 / 3; grid-column: 1 / 2; background-color: #74cbf0; }
-.bottom-right { grid-row: 2 / 3; grid-column: 2 / 3; background-color: #74cbf0; }
+.top-left {gap: 0%; } /* Vertical gap between grid rows*/
+.top-right { gap: 8%; }
+.bottom-left { gap: 10%; }
+.bottom-right { gap: 8%; }
 
 /* ------------------------------------------------------------------------------------- */
-/* -- General Format Stuff -- */
+/* -- Text Format Stuff -- */
 .header {
-    font-size: clamp(23px, 2vw, 50px);
     font-weight: bold;
-    /* background: #eddc98; */
+    /* border: 1px solid rgb(255, 255, 255); */
 }
 
-.text {
-    font-size: clamp(23px, 2vw, 50px);
+.fit-text {
+    text-align: 
+    center;
+    font-size: 10px;
+    color: rgb(255, 255, 255); 
+    font-family: Arial, sans-serif;
 }
- 
 /* ------------------------------------------------------------------------------------- */
 /* -- Light Corner Stuff -- */
 .light-row-0 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
     border: 1px solid rgb(255, 255, 255);
     background: #d2b542;
-    
-    width: 50%;
-    height: 100%
+
+    width: 70%;
+    height: 100%;
 }
 
 .light-row-1 {
     display: flex;
-    gap: 10px;
-    
+    align-items: center;
+    justify-content: center;
+    /* overflow: hidden; */
+
+    gap: 3%;
+
     width: 100%;
-    height: 100%
+    height: 90%
 }
 
 .light-row-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
     border: 1px solid rgb(255, 255, 255);
     background: #d2b542;
-   
+
     width: 75%;
     height: 100%
 }
 
 /* ------------------------------------------------------------------------------------- */
-/* -- Button Stuff -- */
-button {
-    flex: 1; /* Makes each button take equal space */
-    padding: 10px;
+/* -- Brake Corner Stuff -- */
+.brake-row-0 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
     border: 1px solid rgb(255, 255, 255);
-    border-radius: 20px;
+    background: #d2b542;
 
-    font-size: clamp(23px, 2vw, 45px);
-    color: white;
+    width: 70%;
+    height: 80%;
 
-    cursor: pointer;
-    transition: 0.2s ease;
+    /* font-size: 3.8vw; */
 }
 
-button[data-action="LIGHT_FLASHING"] { background: #ffcc00; }
-button[data-action="LIGHT_STEADY"] { background: #4CAF50; }
-button[data-action="LIGHT_OFF"] { background: #f44a4a; }
+.brake-row-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow: hidden; */ /* No overflow for button scaling*/
+    
+    gap: 4%; /* Gap between row items */
+    /* padding: 10px; */
 
-button[data-action="LIDAR_ON"] { background: #9db7ed; }
-button[data-action="LIDAR_OFF"] { background: #0c2e77;}
-button[data-action="BRAKE_ON"] { background: #e60000; }
-button[data-action="BRAKE_OFF"] { background: #e38585; }
+    width: 95%;
+    height: 100%
+}
 
-button:hover {
-    opacity: 0.8;
+/* ------------------------------------------------------------------------------------- */
+/* -- Button Stuff -- */
+.app-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.1s ease;
+    border: 2.5px solid #ffffff;
+}
+
+button[data-action="LIGHT_FLASHING"] { background: #ffcc00; border-radius: 27%;}
+button[data-action="LIGHT_STEADY"] { background: #4CAF50; border-radius: 27%;}
+button[data-action="LIGHT_OFF"] { background: #f44a4a; border-radius: 27%;}
+
+button[data-action="LIDAR_ON"] { background: #9db7ed; border-radius: 25px;}
+button[data-action="LIDAR_OFF"] { background: #0c2e77; border-radius: 25px;}
+button[data-action="BRAKE_ON"] { background: #e60000; border-radius: 25px;}
+button[data-action="BRAKE_OFF"] { background: #e38585; border-radius: 25px;}
+
+.app-button.pressed {
     transform: scale(1.05);
-}
-
-button:active {
-    transform: scale(0.95);
+    opacity: 0.8;
+    border: 3px solid #ffffff;
 }
