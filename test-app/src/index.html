@@ -10,21 +10,126 @@
 <body>
     <div class="grid-container">
         <div class="grid-item top-left">
-            
+            <div class="status-row-0">
+                <div class="status-grid">
+                    
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Battery
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span id="batteryStatus">
+                                ---
+                            </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Speed
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span id="speedStatus">
+                                ---
+                            </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Brake
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span id="brakeStatus">
+                                ---
+                            </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            LiDAR
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span id="lidarStatus">
+                                ---
+                            </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            SDrive
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span id="selfdriveStatus">
+                                ---
+                            </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Light
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="status-grid-item">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span id="lightStatus">
+                                ---
+                            </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="status-row-1">
+                <span class="fit-text" id="lightStatus">
+                    Light Status: ---
+                </span>
+            </div> -->
         </div>
 
         <div class="grid-item top-right">
-            <div class="brake-row-0">
-                <p class="fit-text header">&nbsp;LiDAR Control&nbsp;</p>
-            </div>
-            <div class="brake-row-1">
-                <button class="app-button" data-action="LIDAR_ON">
-                    <span class="fit-text">&nbsp;LiDAR On&nbsp;</span>
-                </button>
-                <button class="app-button" data-action="LIDAR_OFF">
-                    <span class="fit-text">&nbsp;LiDAR Off&nbsp;</span>
-                </button>
-            </div>
+            <!-- <select id="fruit" name="fruit">
+                <option value="apple">Apple</option>
+                <option value="banana">Banana</option>
+                <option value="cherry">Cherry</option>
+            </select> -->
         </div>
 
         <div class="grid-item bottom-left">
@@ -40,20 +145,38 @@
                 </button>
                 <button class="app-button" data-action="LIGHT_OFF">
                     <span class="fit-text">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        Off
+                        &nbsp;&nbsp;&nbsp;&nbsp;
                     </span>
                 </button>
             </div>
-            <!-- <div class="light-row-2 text">
-                <p class="text"><span id="lightStatus">Light Status: ---</span></p>
-            </div> -->
         </div>
 
         <div class="grid-item bottom-right">
-            <div class="brake-row-0">
-                <p class="fit-text header">&nbsp;Brake Control&nbsp;</p>
+
+            <div class="button-row-1">
+                <button class="app-button" data-action="LIDAR_ON">
+                    <span class="fit-text">&nbsp;LiDAR On&nbsp;</span>
+                </button>
+                <button class="app-button" data-action="LIDAR_OFF">
+                    <span class="fit-text">&nbsp;LiDAR Off&nbsp;</span>
+                </button>
             </div>
-            <div class="brake-row-1">
+
+            <div class="button-row-0">
+                <button class="app-button" data-action="SELFDRIVE_FULL">
+                    <span class="fit-text">&nbsp;&nbsp;&nbsp;SD Full&nbsp;&nbsp;&nbsp;</span>
+                </button>
+                <button class="app-button" data-action="SELFDRIVE_JOYSTICK">
+                    <span class="fit-text">&nbsp;SD Joystick&nbsp;</span>
+                </button>
+                <button class="app-button" data-action="SELFDRIVE_OFF">
+                    <span class="fit-text">&nbsp;&nbsp;&nbsp;SD Off&nbsp;&nbsp;&nbsp;</span>
+                </button>
+            </div>
+
+            <div class="button-row-1">
                 <button class="app-button" data-action="BRAKE_ON">
                     <span class="fit-text">&nbsp;Brake On&nbsp;</span>
                 </button>

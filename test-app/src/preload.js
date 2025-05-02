@@ -8,6 +8,5 @@ contextBridge.exposeInMainWorld('electronAppAPI', {
   // General purpose button
   sendAction: (action) => ipcRenderer.send('button-action', action),
 
-  // lightUpdate: (callback) => ipcRenderer.on('update-light-display', (_, msg) => callback(msg))
   onDisplayUpdate: (callback) => ipcRenderer.on('update-display', (_, msg) => callback(msg))
 });

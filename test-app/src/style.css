@@ -26,15 +26,14 @@ body {
     align-items: center;
     overflow: hidden;
     
-    background-color: #74cbf0;
     border: 1px solid #d6d4d4;
     padding: 15px; /* Gaps above and below grid contents*/
 }
 
-.top-left {gap: 0%; } /* Vertical gap between grid rows*/
-.top-right { gap: 8%; }
-.bottom-left { gap: 10%; }
-.bottom-right { gap: 8%; }
+.top-left {gap: 5%; padding: 10px; background-color: #74cbf0;} /* Vertical gap between grid rows*/
+.top-right { gap: 8%; background-color: #74cbf0;}
+.bottom-left { gap: 11%; padding: 7% 3%; background-color: #74cbf0;}
+.bottom-right { gap: 5%; padding: 10px; background-color: #74cbf0;}
 
 /* ------------------------------------------------------------------------------------- */
 /* -- Text Format Stuff -- */
@@ -44,12 +43,58 @@ body {
 }
 
 .fit-text {
-    text-align: 
-    center;
+    text-align: center;
     font-size: 10px;
     color: rgb(255, 255, 255); 
     font-family: Arial, sans-serif;
 }
+
+/* ------------------------------------------------------------------------------------- */
+/* -- Status Corner Stuff -- */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 100%;
+    width: 100%;
+    background-color: #9c86e4;
+}
+
+.status-grid-item {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    
+    border: 1.5px solid #d6d4d4;
+    /* padding: 15px; */
+}
+
+.status-row-0 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow: hidden; */
+
+    /* border: 1px solid rgb(255, 255, 255);
+    background: #d2b542; */
+
+    width: 100%;
+    height: 100%
+}
+
+.status-row-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    border: 1px solid rgb(255, 255, 255);
+    background: #d2b542;
+
+    width: 100%;
+    height: 40%
+}
+
 /* ------------------------------------------------------------------------------------- */
 /* -- Light Corner Stuff -- */
 .light-row-0 {
@@ -62,7 +107,7 @@ body {
     background: #d2b542;
 
     width: 70%;
-    height: 100%;
+    height: 85%;
 }
 
 .light-row-1 {
@@ -71,43 +116,27 @@ body {
     justify-content: center;
     /* overflow: hidden; */
 
-    gap: 3%;
+    gap: 4%;
 
     width: 100%;
-    height: 90%
-}
-
-.light-row-2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-
-    border: 1px solid rgb(255, 255, 255);
-    background: #d2b542;
-
-    width: 75%;
     height: 100%
 }
 
 /* ------------------------------------------------------------------------------------- */
 /* -- Brake Corner Stuff -- */
-.brake-row-0 {
+.button-row-0 {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    /* overflow: hidden; */
 
-    border: 1px solid rgb(255, 255, 255);
-    background: #d2b542;
+    gap: 3%;
 
-    width: 70%;
-    height: 80%;
-
-    /* font-size: 3.8vw; */
+    width: 100%;
+    height: 100%;
 }
 
-.brake-row-1 {
+.button-row-1 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,8 +145,8 @@ body {
     gap: 4%; /* Gap between row items */
     /* padding: 10px; */
 
-    width: 95%;
-    height: 100%
+    width: 90%;
+    height: 85%
 }
 
 /* ------------------------------------------------------------------------------------- */
@@ -139,8 +168,11 @@ button[data-action="LIGHT_FLASHING"] { background: #ffcc00; border-radius: 27%;}
 button[data-action="LIGHT_STEADY"] { background: #4CAF50; border-radius: 27%;}
 button[data-action="LIGHT_OFF"] { background: #f44a4a; border-radius: 27%;}
 
-button[data-action="LIDAR_ON"] { background: #9db7ed; border-radius: 25px;}
-button[data-action="LIDAR_OFF"] { background: #0c2e77; border-radius: 25px;}
+button[data-action="SELFDRIVE_FULL"] { background: #79e2d1; border-radius: 25px;}
+button[data-action="SELFDRIVE_JOYSTICK"] { background: #08bda2; border-radius: 25px;}
+button[data-action="SELFDRIVE_OFF"] { background: #06816e; border-radius: 25px;}
+button[data-action="LIDAR_ON"] { background: #96b7ff; border-radius: 25px;}
+button[data-action="LIDAR_OFF"] { background: #2861be; border-radius: 25px;}
 button[data-action="BRAKE_ON"] { background: #e60000; border-radius: 25px;}
 button[data-action="BRAKE_OFF"] { background: #e38585; border-radius: 25px;}
 
