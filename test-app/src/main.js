@@ -51,8 +51,29 @@ async function initROS() {
   });
 
   node.spin();
-
   console.log(`Created all publishers and subscribers. Waiting...`);
+
+  defaultPublish();
+  console.log(`Published default values. Waiting...`);
+}
+
+//--------------------------------------------------------------------------------------------------
+function defaultPublish() {
+  let temp = "LIGHT_OFF";
+  publisher_light.publish({ data: temp });
+  console.log(`---> Published from Electron app: ${temp}`);
+
+  temp = "BRAKE_ON";
+  publisher_brake.publish({ data: temp });
+  console.log(`---> Published from Electron app: ${temp}`);
+
+  temp = "LIDAR_OFF";
+  publisher_lidar.publish({ data: temp });
+  console.log(`---> Published from Electron app: ${temp}`);
+
+  temp = 0;
+  publisher_selfdrive.publish({ data: temp });
+  console.log(`---> Published from Electron app: ${temp}`);
 }
 
 //--------------------------------------------------------------------------------------------------
