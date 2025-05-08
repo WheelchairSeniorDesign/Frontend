@@ -14,10 +14,21 @@ body {
 /* -- Full Grid Stuff -- */
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-rows: repeat(2, minmax(0, 1fr));
     height: 100vh;
     width: 100vw;
+    box-sizing: border-box;
+}
+
+.grid-top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid-bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 0.4fr;
 }
 
 .grid-item {
@@ -27,19 +38,17 @@ body {
     overflow: hidden;
     
     border: 1px solid #d6d4d4;
-    padding: 15px; /* Gaps above and below grid contents*/
 }
 
-.top-left {gap: 5%; padding: 10px; background-color: #74cbf0;} /* Vertical gap between grid rows*/
-.top-right { gap: 8%; background-color: #74cbf0;}
-.bottom-left { gap: 11%; padding: 7% 3%; background-color: #74cbf0;}
-.bottom-right { gap: 5%; padding: 10px; background-color: #74cbf0;}
+.top-left {gap: 0%; padding: 2%; background-color: #74cbf0;} /* Vertical gap between grid rows*/
+.top-right { gap: 0%; padding: 0%; background-color: #74cbf0;}
+.bottom-left { gap: 0%; padding: 1% 1%; background-color: #74cbf0;}
+.bottom-right { gap: 5%; padding: 2%; background-color: #74cbf0;}
 
 /* ------------------------------------------------------------------------------------- */
 /* -- Text Format Stuff -- */
 .header {
     font-weight: bold;
-    /* border: 1px solid rgb(255, 255, 255); */
 }
 
 .fit-text {
@@ -53,46 +62,25 @@ body {
 /* -- Status Corner Stuff -- */
 .status-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(6, minmax(0, 0.25fr));
+    overflow: hidden;
     height: 100%;
     width: 100%;
     background-color: #9c86e4;
+    
 }
 
 .status-grid-item {
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
-    
+
+    width: 100%;
+    height: 100%;
+
     border: 1.5px solid #d6d4d4;
-    /* padding: 15px; */
-}
-
-.status-row-0 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* overflow: hidden; */
-
-    /* border: 1px solid rgb(255, 255, 255);
-    background: #d2b542; */
-
-    width: 100%;
-    height: 100%
-}
-
-.status-row-1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-
-    border: 1px solid rgb(255, 255, 255);
-    background: #d2b542;
-
-    width: 100%;
-    height: 40%
 }
 
 /* ------------------------------------------------------------------------------------- */
@@ -180,4 +168,20 @@ button[data-action="BRAKE_OFF"] { background: #e38585; border-radius: 25px;}
     transform: scale(1.05);
     opacity: 0.8;
     border: 3px solid #ffffff;
+}
+
+/* ------------------------------------------------------------------------------------- */
+/* -- Image Stuff -- */
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+.image-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
 }

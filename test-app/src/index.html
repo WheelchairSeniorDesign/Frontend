@@ -9,10 +9,12 @@
 
 <body>
     <div class="grid-container">
-        <div class="grid-item top-left">
-            <div class="status-row-0">
+
+        <div class="grid-top-row">
+
+            <div class="grid-item top-left">
                 <div class="status-grid">
-                    
+
                     <div class="status-grid-item">
                         <span class="fit-text">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -80,7 +82,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </span>
                     </div>
-                    
+
                     <div class="status-grid-item">
                         <span class="fit-text">
                             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -117,74 +119,78 @@
                 </div>
             </div>
 
-            <!-- <div class="status-row-1">
-                <span class="fit-text" id="lightStatus">
-                    Light Status: ---
-                </span>
-            </div> -->
-        </div>
-
-        <div class="grid-item top-right">
-            <!-- <select id="fruit" name="fruit">
-                <option value="apple">Apple</option>
-                <option value="banana">Banana</option>
-                <option value="cherry">Cherry</option>
-            </select> -->
-        </div>
-
-        <div class="grid-item bottom-left">
-            <div class="light-row-0">
-                <p class="fit-text header">&nbsp;Light Control&nbsp;</p>
-            </div>
-            <div class="light-row-1">
-                <button class="app-button" data-action="LIGHT_FLASHING">
-                    <span class="fit-text">&nbsp;Flashing&nbsp;</span>
-                </button>
-                <button class="app-button" data-action="LIGHT_STEADY">
-                    <span class="fit-text">&nbsp;Steady&nbsp;</span>
-                </button>
-                <button class="app-button" data-action="LIGHT_OFF">
-                    <span class="fit-text">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        Off
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                    </span>
-                </button>
+            <div class="grid-item top-right">
+                <!-- <select id="fruit" name="fruit">
+                    <option value="apple">Apple</option>
+                    <option value="banana">Banana</option>
+                    <option value="cherry">Cherry</option>
+                </select> -->
             </div>
         </div>
 
-        <div class="grid-item bottom-right">
-
-            <div class="button-row-1">
-                <button class="app-button" data-action="LIDAR_ON">
-                    <span class="fit-text">&nbsp;LiDAR On&nbsp;</span>
-                </button>
-                <button class="app-button" data-action="LIDAR_OFF">
-                    <span class="fit-text">&nbsp;LiDAR Off&nbsp;</span>
-                </button>
+        <div class="grid-bottom-row">
+            
+            <div class="grid-item bottom-left">
+                
+                <div class="image-flex">
+                    <img src="AEC_floor_plan.jpg" alt="AEC 4th floor plan" class="image">
+                </div>
             </div>
 
-            <div class="button-row-0">
-                <button class="app-button" data-action="SELFDRIVE_FULL">
-                    <span class="fit-text">&nbsp;&nbsp;&nbsp;SD Full&nbsp;&nbsp;&nbsp;</span>
-                </button>
-                <button class="app-button" data-action="SELFDRIVE_JOYSTICK">
-                    <span class="fit-text">&nbsp;SD Joystick&nbsp;</span>
-                </button>
-                <button class="app-button" data-action="SELFDRIVE_OFF">
-                    <span class="fit-text">&nbsp;&nbsp;&nbsp;SD Off&nbsp;&nbsp;&nbsp;</span>
-                </button>
+            <div class="grid-item bottom-right">
+
+                <div class="button-row-1">
+                    <button class="app-button" data-action="LIDAR_ON">
+                        <span class="fit-text">&nbsp;LiDAR On&nbsp;</span>
+                    </button>
+                    <button class="app-button" data-action="LIDAR_OFF">
+                        <span class="fit-text">&nbsp;LiDAR Off&nbsp;</span>
+                    </button>
+                </div>
+    
+                <div class="button-row-0">
+                    <button class="app-button" data-action="SELFDRIVE_FULL">
+                        <span class="fit-text">&nbsp;&nbsp;&nbsp;SD Full&nbsp;&nbsp;&nbsp;</span>
+                    </button>
+                    <button class="app-button" data-action="SELFDRIVE_JOYSTICK">
+                        <span class="fit-text">&nbsp;SD Joystick&nbsp;</span>
+                    </button>
+                    <button class="app-button" data-action="SELFDRIVE_OFF">
+                        <span class="fit-text">&nbsp;&nbsp;&nbsp;SD Off&nbsp;&nbsp;&nbsp;</span>
+                    </button>
+                </div>
+    
+                <div class="button-row-1">
+                    <button class="app-button" data-action="BRAKE_ON">
+                        <span class="fit-text">&nbsp;Brake On&nbsp;</span>
+                    </button>
+                    <button class="app-button" data-action="BRAKE_OFF">
+                        <span class="fit-text">&nbsp;Brake Off&nbsp;</span>
+                    </button>
+                </div>
+    
+                <!-- <div class="light-row-0">
+                    <p class="fit-text header">&nbsp;Light Control&nbsp;</p>
+                </div> -->
+                <div class="light-row-1">
+                    <button class="app-button" data-action="LIGHT_FLASHING">
+                        <span class="fit-text">&nbsp;Flashing&nbsp;</span>
+                    </button>
+                    <button class="app-button" data-action="LIGHT_STEADY">
+                        <span class="fit-text">&nbsp;Steady&nbsp;</span>
+                    </button>
+                    <button class="app-button" data-action="LIGHT_OFF">
+                        <span class="fit-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            Off
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </button>
+                </div>
             </div>
 
-            <div class="button-row-1">
-                <button class="app-button" data-action="BRAKE_ON">
-                    <span class="fit-text">&nbsp;Brake On&nbsp;</span>
-                </button>
-                <button class="app-button" data-action="BRAKE_OFF">
-                    <span class="fit-text">&nbsp;Brake Off&nbsp;</span>
-                </button>
-            </div>
         </div>
+        
     </div>
 
     <script src="../node_modules/fitty/dist/fitty.min.js"></script>

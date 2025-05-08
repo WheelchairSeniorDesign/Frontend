@@ -82,8 +82,8 @@ let mainWindow;
 function createWindow() {
   // First create the window variable using BrowserWindow
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 970,
+    height: 750,
 
     frame: true,
     autoHideMenuBar: true, // Hide menu bar
