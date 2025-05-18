@@ -166,7 +166,7 @@ ipcMain.on('button-action', (event, action) => {
   if(action.startsWith('ROOM_')) {
     temp = action.substring(action.indexOf('_') + 1);
     const msg = { data: temp };
-    publisher_selfdrive.publish(msg);
+    publisher_room.publish(msg);
     console.log(`---> Published from Electron app: ${msg.data}`);
   }
 
