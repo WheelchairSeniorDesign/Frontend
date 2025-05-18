@@ -32,6 +32,9 @@ async function initROS() {
   const topic_selfdrive = 'electron_selfdrive';
   publisher_selfdrive = node.createPublisher(message_int, topic_selfdrive);
 
+  const topic_room = 'electron_room';
+  publisher_room = node.createPublisher(message_int, topic_room);
+
   //--------------------------------------------------------------------------
   // Create subscribers
   const topic_battery = 'electron_battery';
@@ -159,7 +162,16 @@ ipcMain.on('button-action', (event, action) => {
   }
 
   //-------------------------------------------------------------------------
-  //Send action name for screen update
+  // Room destination actions
+  if(action.startsWith('ROOM_')) {
+    temp = action.substring(action.indexOf('_') + 1);
+    const msg = { data: temp };
+    publisher_selfdrive.publish(msg);
+    console.log(`---> Published from Electron app: ${msg.data}`);
+  }
+
+  //-------------------------------------------------------------------------
+  // Send action name for screen update
   mainWindow.webContents.send('update-display', action); 
 
 });

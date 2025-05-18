@@ -48,4 +48,10 @@ window.electronAppAPI.onDisplayUpdate(function(action) {
     temp = action.substring(action.indexOf('_') + 1);
     statusBox.textContent = temp;
   }
+
+  if(action.startsWith('ROOM_')) {
+    const statusBox = document.getElementById('roomStatus');
+    temp = action.substring(action.indexOf('_') + 1);
+    statusBox.textContent = temp;
+  }
 });

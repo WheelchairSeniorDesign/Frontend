@@ -41,7 +41,7 @@ body {
 }
 
 .top-left {gap: 0%; padding: 2%; background-color: #74cbf0;} /* Vertical gap between grid rows*/
-.top-right { gap: 0%; padding: 0%; background-color: #74cbf0;}
+.top-right { gap: 5%; padding: 2%; background-color: #74cbf0;}
 .bottom-left { gap: 0%; padding: 1% 1%; background-color: #74cbf0;}
 .bottom-right { gap: 5%; padding: 2%; background-color: #74cbf0;}
 
@@ -52,10 +52,17 @@ body {
 }
 
 .fit-text {
+    font-family: Arial, sans-serif;
     text-align: center;
     font-size: 10px;
+}
+
+.text-color-black {
+    color: rgb(0, 0, 0); 
+}
+
+.text-color-white {
     color: rgb(255, 255, 255); 
-    font-family: Arial, sans-serif;
 }
 
 /* ------------------------------------------------------------------------------------- */
@@ -63,8 +70,7 @@ body {
 .status-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(6, minmax(0, 0.25fr));
-    overflow: hidden;
+    grid-template-rows: repeat(7, minmax(0, 0.25fr));
     height: 100%;
     width: 100%;
     background-color: #9c86e4;
@@ -75,12 +81,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-
     width: 100%;
     height: 100%;
-
     border: 1.5px solid #d6d4d4;
+}
+
+.another-grid-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 32%;
+    /* border: 1px solid red; */
+    margin-bottom: 1%;
 }
 
 /* ------------------------------------------------------------------------------------- */
@@ -144,30 +157,27 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    
-    width: 100%;
-    height: 100%;
 
     transition: transform 0.1s ease;
     border: 2.5px solid #ffffff;
 }
 
-button[data-action="LIGHT_FLASHING"] { background: #ffcc00; border-radius: 27%;}
-button[data-action="LIGHT_STEADY"] { background: #4CAF50; border-radius: 27%;}
-button[data-action="LIGHT_OFF"] { background: #f44a4a; border-radius: 27%;}
+button[data-action="LIGHT_FLASHING"] { background: #ffcc00; width: 100%; height: 100%; border-radius: 25px;}
+button[data-action="LIGHT_STEADY"] { background: #4CAF50; width: 100%; height: 100%; border-radius: 25px;}
+button[data-action="LIGHT_OFF"] { background: #f44a4a; width: 100%; height: 100%; border-radius: 25px;}
 
-button[data-action="SELFDRIVE_FULL"] { background: #79e2d1; border-radius: 25px;}
-button[data-action="SELFDRIVE_JOYSTICK"] { background: #08bda2; border-radius: 25px;}
-button[data-action="SELFDRIVE_OFF"] { background: #06816e; border-radius: 25px;}
-button[data-action="LIDAR_ON"] { background: #96b7ff; border-radius: 25px;}
-button[data-action="LIDAR_OFF"] { background: #2861be; border-radius: 25px;}
-button[data-action="BRAKE_ON"] { background: #e60000; border-radius: 25px;}
-button[data-action="BRAKE_OFF"] { background: #e38585; border-radius: 25px;}
+button[data-action="SELFDRIVE_FULL"] { background: #79e2d1; width: 100%; height: 100%; border-radius: 25px;}
+button[data-action="SELFDRIVE_JOYSTICK"] { background: #08bda2; width: 100%; height: 100%; border-radius: 25px;}
+button[data-action="SELFDRIVE_OFF"] { background: #06816e; width: 100%; height: 100%; border-radius: 25px;}
+button[data-action="LIDAR_ON"] { background: #96b7ff; width: 100%; height: 100%; border-radius: 25px;}
+button[data-action="LIDAR_OFF"] { background: #2861be; width: 100%; height: 100%; border-radius: 25px;}
+button[data-action="BRAKE_ON"] { background: #e60000; width: 100%; height: 100%; border-radius: 25px;}
+button[data-action="BRAKE_OFF"] { background: #e38585; width: 100%; height: 100%; border-radius: 25px;}
 
 .app-button.pressed {
     transform: scale(1.05);
     opacity: 0.8;
-    border: 3px solid #ffffff;
+    /* border: 3px solid #ffffff; */
 }
 
 /* ------------------------------------------------------------------------------------- */
@@ -178,10 +188,28 @@ button[data-action="BRAKE_OFF"] { background: #e38585; border-radius: 25px;}
 }
 
 .image-flex {
+    display: inline-block;
+    position: relative; 
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #4b4a4a;
+}
+
+.floor-button {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    width: 100%;
-    height: 100%;
 }
+
+button[data-action="ROOM_429"] {width: 5.1%; height: 9%; left: 6%; top: 48.5%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_423"] {width: 5.1%; height: 9%; left: 24%; top: 48.5%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_419"] {width: 5.1%; height: 9%; left: 39%; top: 48.5%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+
+button[data-action="ROOM_428"] {width: 5%; height: 8%; left: 9.6%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_424"] {width: 5.1%; height: 8%; left: 23.5%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_420"] {width: 5.1%; height: 8%; left: 38%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_414"] {width: 7%; height: 8%; left: 55.5%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+
+button[data-action="ROOM_400"] {width: 5.1%; height: 9%; left: 61.5%; top: 43%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}

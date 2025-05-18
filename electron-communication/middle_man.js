@@ -44,9 +44,9 @@ async function main()
     const speedPublisher = node.createPublisher(messageString, topic_electron_speed);
 
     const topic_jetson_speed = 'motor_speed';
-    node.createSubscription('wheelchair_sensor_msgs/msg/RefSpeed', topic_jetson_speed, (msg) => {
+    node.createSubscription('wheelchair_sensor_msgs/msg/Motors', topic_jetson_speed, (msg) => {
         // Format battery percent int to a string
-        speedString = msg.left_speed + " | " + msg.right_speed
+        speedString = msg.left_mph + " | " + msg.right_mph
         console.log(`Received from Jetson: ${speedString}`);
     
         speedPublisher.publish(speedString);
