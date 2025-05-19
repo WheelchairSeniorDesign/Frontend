@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Wheelchair Lock Screen</title>
+        <!-- <link rel="stylesheet" href="./style_lock_screen.css"> -->
+        <link href="../node_modules/material-icons/iconfont/material-icons.css" rel="stylesheet">
+
+        <style>
+            body {
+                width:  100%;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                background-color: #74cbf0;
+            }
+            .center {
+                width:  100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .lock-screen {
+                width:  50%;
+                height: 90%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                flex-direction: column;
+                background: rgb(255, 255, 255);
+                border-radius: 6%;
+                padding: 3% 6%;
+                border: 5px solid rgb(166, 163, 163);
+                box-sizing: border-box;
+            }
+            .touch-buttons {
+                width: 72%;
+                height: 61%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                gap: 4% 11.5%;
+            }
+            .touch-buttons button {
+                flex: 1;
+                border-radius: 50%;
+                font-family: poppins;
+                font-size: 150%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="center">
+            <div class="lock-screen">
+                <input type="hidden" name="pin" id="pin"/>
+                
+                <div class="pin-display">
+                    <div class="dots">
+                    <!-- Add dots via script -->
+                    </div>
+                </div>
+
+                <div class="touch-buttons">
+                    <button type="button">1</button>
+                    <button type="button">2</button>
+                    <button type="button">3</button>
+                    <button type="button">4</button>
+                    <button type="button">5</button>
+                    <button type="button">6</button>
+                    <button type="button">7</button>
+                    <button type="button">8</button>
+                    <button type="button">9</button>
+                    <button type="button" class="icon clear">
+                        <span class="material-icons-outlined">backspace</span>
+                    </button>
+                    <button type="button" class="icon next">0</button>
+                    <button type="button">
+                        <span class="material-icons-outlined">keyboard_tab</span>
+                    </button>
+                </div>
+
+                <button type="button">Shutdown</button>
+            </div>
+        </div>
+    </body>
+</html>
