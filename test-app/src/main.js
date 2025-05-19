@@ -100,7 +100,7 @@ function createWindow() {
     }
   });
 
-  // Load HTML file
+  mainWindow.maximize();
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   //------------------------------------------------------------

@@ -207,9 +207,11 @@ button[data-action="ROOM_429"] {width: 5.1%; height: 9%; left: 6%; top: 48.5%; b
 button[data-action="ROOM_423"] {width: 5.1%; height: 9%; left: 24%; top: 48.5%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
 button[data-action="ROOM_419"] {width: 5.1%; height: 9%; left: 39%; top: 48.5%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
 
-button[data-action="ROOM_428"] {width: 5%; height: 8%; left: 9.6%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
-button[data-action="ROOM_424"] {width: 5.1%; height: 8%; left: 23.5%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
-button[data-action="ROOM_420"] {width: 5.1%; height: 8%; left: 38%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
-button[data-action="ROOM_414"] {width: 7%; height: 8%; left: 55.5%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_426"] {width: 5%; height: 8%; left: 16.2%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_422"] {width: 5.1%; height: 8%; left: 31%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_416"] {width: 6%; height: 8%; left: 45.5%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_414"] {width: 6%; height: 8%; left: 56%; top: 73.6%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
 
 button[data-action="ROOM_400"] {width: 5.1%; height: 9%; left: 61.5%; top: 43%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_404"] {width: 5.1%; height: 9%; left: 90.7%; top: 20%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
+button[data-action="ROOM_410"] {width: 5.1%; height: 9%; left: 86.5%; top: 79.5%; border: 2.5px solid #000000; border-radius: 35%; position: absolute;}
