@@ -123,3 +123,5 @@ Also, `npm start` might throw some errors upon app launch, but those can be igno
 ## Electron App Structure
 
 - `test-app/` - Contains the main Electron application.
+- `electron-communication/` - Contains the middle-man node for ROS 2 communication. 
+- `7034` - This is the 4-digit pin for the lock screen (Note: fingerprint does not work for login).
