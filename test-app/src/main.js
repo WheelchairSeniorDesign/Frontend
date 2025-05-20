@@ -84,8 +84,9 @@ function defaultPublish() {
 let mainWindow;
 let lockWindow;
 let isShuttingDown = false;
+let actualShutdown = true;
 
-function createWindows() {
+function createLockWindow() {
   lockWindow = new BrowserWindow({
     width: 970,
     height: 750,
@@ -100,7 +101,16 @@ function createWindows() {
   lockWindow.loadFile(path.join(__dirname, 'lock_screen.html'));
   lockWindow.maximize();
 
-  //-----------------------------------------------------------------------------------------
+  lockWindow.on('close', (event) => {
+  if (!actualShutdown) {
+    return;
+  }
+
+  shutdownApp();
+});
+}
+
+function createMainWindow() {
   mainWindow = new BrowserWindow({ // Create the window variable using BrowserWindow
     width: 970,
     height: 750,
@@ -114,17 +124,21 @@ function createWindows() {
   });
 
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
-  mainWindow.hide();
+  mainWindow.maximize();
 
-  // Cleanup
-  mainWindow.on('closed', shutdownApp);
-  lockWindow.on('closed', shutdownApp);
+  mainWindow.on('close', (event) => {
+  if (!actualShutdown) {
+    return;
+  }
+
+  shutdownApp();
+});
 }
 
 //--------------------------------------------------------------------
 // Cleanup function
 async function shutdownApp() {
-  if (isShuttingDown) return; // Prevent multiple calls
+  if (!actualShutdown || isShuttingDown) return;
   isShuttingDown = true;
 
   console.log("Shutting down application...");
@@ -153,10 +167,11 @@ ipcMain.on('button-action', (event, action) => {
 
   // Lock Screen
   if(action == "LOCK") {
-    mainWindow.hide();
-    lockWindow.show();
-    lockWindow.maximize();
-    defaultPublish()
+    actualShutdown = false;
+    mainWindow.close();
+    actualShutdown = true;
+    createLockWindow();
+    defaultPublish();
   }
 
   // Publish to ROS 2 & send display updates
@@ -216,10 +231,11 @@ ipcMain.on('button-action', (event, action) => {
 ipcMain.on('send-password', (event, password) => {
   const ACTUAL_PASSWORD = 7034;
   if (password == ACTUAL_PASSWORD) {
-    lockWindow.hide();
-    mainWindow.show();
-    mainWindow.maximize();
-    defaultPublish()
+    actualShutdown = false;
+    lockWindow.close();
+    actualShutdown = true;
+    createMainWindow();
+    defaultPublish();
   }
 });
 
@@ -227,7 +243,7 @@ ipcMain.on('send-password', (event, password) => {
 // Other necessary stuff
 app.whenReady().then(async () => {
   
-  createWindows();
+  createLockWindow();
   initROS();
 
   app.on('activate', () => {
