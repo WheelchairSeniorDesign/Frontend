@@ -151,6 +151,14 @@ async function shutdownApp() {
 ipcMain.on('button-action', (event, action) => {
   console.log(`Received button action: ${action}`);
 
+  // Lock Screen
+  if(action == "LOCK") {
+    mainWindow.hide();
+    lockWindow.show();
+    lockWindow.maximize();
+    defaultPublish()
+  }
+
   // Publish to ROS 2 & send display updates
   if(action == "LIGHT_FLASHING" || action == "LIGHT_STEADY" || action == "LIGHT_OFF") {
     publisher_light.publish({ data: action });
@@ -206,7 +214,7 @@ ipcMain.on('button-action', (event, action) => {
 // Switching windows
 // Unlock
 ipcMain.on('send-password', (event, password) => {
-  const ACTUAL_PASSWORD = 7985;
+  const ACTUAL_PASSWORD = 7034;
   if (password == ACTUAL_PASSWORD) {
     lockWindow.hide();
     mainWindow.show();
@@ -214,13 +222,6 @@ ipcMain.on('send-password', (event, password) => {
     defaultPublish()
   }
 });
-
-// ipcMain.on('lock', () => {
-//   mainWindow.hide();
-//   lockWindow.show();
-//   lockWindow.maximize();
-//   defaultPublish()
-// });
 
 //--------------------------------------------------------------------------------------------------
 // Other necessary stuff

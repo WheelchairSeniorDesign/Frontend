@@ -41,16 +41,12 @@ body {
 }
 
 .top-left {gap: 0%; padding: 2%; background-color: #74cbf0;} /* Vertical gap between grid rows*/
-.top-right { gap: 5%; padding: 2%; background-color: #74cbf0;}
+.top-right { gap: 0%; padding: 0%; background-color: #74cbf0;}
 .bottom-left { gap: 0%; padding: 1% 1%; background-color: #74cbf0;}
 .bottom-right { gap: 5%; padding: 2%; background-color: #74cbf0;}
 
 /* ------------------------------------------------------------------------------------- */
 /* -- Text Format Stuff -- */
-.header {
-    font-weight: bold;
-}
-
 .fit-text {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -92,12 +88,11 @@ body {
     justify-content: center;
     height: 50%;
     width: 32%;
-    /* border: 1px solid red; */
     margin-bottom: 1%;
 }
 
 /* ------------------------------------------------------------------------------------- */
-/* -- Light Corner Stuff -- */
+/* -- Top Right Corner Stuff -- */
 .light-row-0 {
     display: flex;
     align-items: center;
@@ -115,7 +110,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* overflow: hidden; */
 
     gap: 4%;
 
@@ -124,7 +118,54 @@ body {
 }
 
 /* ------------------------------------------------------------------------------------- */
-/* -- Brake Corner Stuff -- */
+/* -- Logout / User Stuff -- */
+.top-right-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    gap: 5%;
+
+    width: 90%;
+    height: 25%;
+    background: rgb(242, 242, 242);
+    border-radius: 15%;
+    padding-left: 10%;
+}
+.top-right-bottom {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction:  column;
+
+    gap: 5%;
+    padding: 2%;
+
+    width: 95%;
+    height: 100%;
+}
+.user-row-0 {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    text-align: center;
+
+    gap: 5%;
+
+    width: 100%;
+    height: 100%;
+}
+.user-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    height: 100%;
+}
+
+/* ------------------------------------------------------------------------------------- */
 .button-row-0 {
     display: flex;
     align-items: center;
@@ -146,8 +187,8 @@ body {
     gap: 4%; /* Gap between row items */
     /* padding: 10px; */
 
-    width: 90%;
-    height: 85%
+    width: 100%;
+    height: 100%;
 }
 
 /* ------------------------------------------------------------------------------------- */
@@ -161,6 +202,8 @@ body {
     transition: transform 0.1s ease;
     border: 2.5px solid #ffffff;
 }
+
+button[data-action="LOCK"] { background: #cfcecb; width: 60%; height: 100%; border-radius: 25px;}
 
 button[data-action="LIGHT_FLASHING"] { background: #ffcc00; width: 100%; height: 100%; border-radius: 25px;}
 button[data-action="LIGHT_STEADY"] { background: #4CAF50; width: 100%; height: 100%; border-radius: 25px;}
@@ -181,7 +224,7 @@ button[data-action="BRAKE_OFF"] { background: #e38585; width: 100%; height: 100%
 }
 
 /* ------------------------------------------------------------------------------------- */
-/* -- Image Stuff -- */
+/* -- Image + Map Stuff -- */
 .image {
     width: 100%;
     height: 100%;
