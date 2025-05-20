@@ -82,42 +82,68 @@ function defaultPublish() {
 //--------------------------------------------------------------------------------------------------
 // Window functionality
 let mainWindow;
-function createWindow() {
-  // First create the window variable using BrowserWindow
-  mainWindow = new BrowserWindow({
+let lockWindow;
+let isShuttingDown = false;
+
+function createWindows() {
+  lockWindow = new BrowserWindow({
     width: 970,
     height: 750,
-
-    frame: true,
-    autoHideMenuBar: true, // Hide menu bar
-
+    autoHideMenuBar: true,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'), // __dirname gives the absolute path
-      
-      // Stuff to use with preload.js separation
-      contextIsolation: true, 
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
       nodeIntegration: false
     }
   });
 
-  mainWindow.maximize();
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
-  // mainWindow.loadFile(path.join(__dirname, 'lock_screen.html'));
+  lockWindow.loadFile(path.join(__dirname, 'lock_screen.html'));
+  lockWindow.maximize();
 
-  //------------------------------------------------------------
-  // Cleanup
-  mainWindow.on('closed', async () => {
-
-    // Shut down ROS node cleanly
-    if (node) {
-      node.destroy();
+  //-----------------------------------------------------------------------------------------
+  mainWindow = new BrowserWindow({ // Create the window variable using BrowserWindow
+    width: 970,
+    height: 750,
+    frame: true,
+    autoHideMenuBar: true, // Hide menu bar
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'), // __dirname gives the absolute path
+      contextIsolation: true, // Stuff to use with preload.js separation
+      nodeIntegration: false
     }
-    await rclnodejs.shutdown();
-
-    mainWindow = null;
-    app.quit();
   });
-  //------------------------------------------------------------
+
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.hide();
+
+  // Cleanup
+  mainWindow.on('closed', shutdownApp);
+  lockWindow.on('closed', shutdownApp);
+}
+
+//--------------------------------------------------------------------
+// Cleanup function
+async function shutdownApp() {
+  if (isShuttingDown) return; // Prevent multiple calls
+  isShuttingDown = true;
+
+  console.log("Shutting down application...");
+
+  if (node) {
+    try {
+      node.destroy();
+    } catch (err) {
+      console.warn("Error destroying ROS node:", err);
+    }
+  }
+
+  try {
+    await rclnodejs.shutdown();
+  } catch (err) {
+    console.warn("Error during ROS shutdown:", err);
+  }
+
+  app.quit();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -174,18 +200,37 @@ ipcMain.on('button-action', (event, action) => {
   //-------------------------------------------------------------------------
   // Send action name for screen update
   mainWindow.webContents.send('update-display', action); 
-
 });
+
+//------------------------------------------------------------
+// Switching windows
+// Unlock
+ipcMain.on('send-password', (event, password) => {
+  const ACTUAL_PASSWORD = 7985;
+  if (password == ACTUAL_PASSWORD) {
+    lockWindow.hide();
+    mainWindow.show();
+    mainWindow.maximize();
+    defaultPublish()
+  }
+});
+
+// ipcMain.on('lock', () => {
+//   mainWindow.hide();
+//   lockWindow.show();
+//   lockWindow.maximize();
+//   defaultPublish()
+// });
 
 //--------------------------------------------------------------------------------------------------
 // Other necessary stuff
 app.whenReady().then(async () => {
   
-  createWindow();
+  createWindows();
   initROS();
 
   app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    if (BrowserWindow.getAllWindows().length === 0) createWindows();
   });
   
 });

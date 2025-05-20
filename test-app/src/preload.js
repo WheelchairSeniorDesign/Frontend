@@ -8,5 +8,7 @@ contextBridge.exposeInMainWorld('electronAppAPI', {
   // General purpose button
   sendAction: (action) => ipcRenderer.send('button-action', action),
 
-  onDisplayUpdate: (callback) => ipcRenderer.on('update-display', (_, msg) => callback(msg))
+  onDisplayUpdate: (callback) => ipcRenderer.on('update-display', (_, msg) => callback(msg)),
+
+  sendPassword: (password) => ipcRenderer.send('send-password', password)
 });
