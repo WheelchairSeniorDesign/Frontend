@@ -42,7 +42,9 @@ async function initROS() {
     console.log(`Received from Jetson: ${msg.data}`);
     
     temp = "BATTERY_" + msg.data;
-    mainWindow.webContents.send('update-display', temp);
+    if (mainWindow && !mainWindow.isDestroyed() && mainWindow.webContents) {
+    	mainWindow.webContents.send('update-display', temp);
+    }
   });
 
   const topic_speed = 'electron_speed';
@@ -50,7 +52,9 @@ async function initROS() {
     console.log(`Received from Jetson: ${msg.data}`);
     
     temp = "SPEED_" + msg.data;
-    mainWindow.webContents.send('update-display', temp);
+    if (mainWindow && !mainWindow.isDestroyed() && mainWindow.webContents) {
+    	mainWindow.webContents.send('update-display', temp);
+    }
   });
 
   node.spin();
